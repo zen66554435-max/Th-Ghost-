@@ -1,0 +1,666 @@
+{
+  "tp": 86,
+  "fp": 0,
+  "fn": 0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "per_category": {
+    "جانب العميل": {
+      "tp": 7,
+      "fn": 0,
+      "recall": 1.0
+    },
+    "التحكم بالوصول": {
+      "tp": 3,
+      "fn": 0,
+      "recall": 1.0
+    },
+    "الخادم والإعدادات": {
+      "tp": 47,
+      "fn": 0,
+      "recall": 1.0
+    },
+    "أمان API": {
+      "tp": 8,
+      "fn": 0,
+      "recall": 1.0
+    },
+    "المصادقة والجلسات": {
+      "tp": 10,
+      "fn": 0,
+      "recall": 1.0
+    },
+    "الحقن": {
+      "tp": 8,
+      "fn": 0,
+      "recall": 1.0
+    },
+    "منطق الأعمال": {
+      "tp": 2,
+      "fn": 0,
+      "recall": 1.0
+    },
+    "أمان الملفات": {
+      "tp": 1,
+      "fn": 0,
+      "recall": 1.0
+    }
+  },
+  "detected": [
+    {
+      "gt": "GT-OLD-JS",
+      "title": "مكتبة قديمة: jQuery 1.x قديمة بثغرات معروفة",
+      "url": "http://127.0.0.1:39005/assets/jquery-1.12.4.min.js",
+      "severity": "متوسط",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-BFLA",
+      "title": "وظيفة إدارية متاحة دون مصادقة ظاهرة (BFLA)",
+      "url": "http://127.0.0.1:39005/api/admin/stats",
+      "severity": "عالٍ",
+      "confidence": "تحتاج مراجعة يدوية"
+    },
+    {
+      "gt": "GT-JS-SECRET",
+      "title": "مفتاح Google API مكشوف",
+      "url": "http://127.0.0.1:39005/assets/app.js",
+      "severity": "عالٍ",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-OLD-JS",
+      "title": "مكتبة قديمة: jQuery 1.x قديمة بثغرات معروفة",
+      "url": "http://127.0.0.1:39005/assets/app.js",
+      "severity": "متوسط",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-DOM",
+      "title": "تدفق DOM خطير محتمل (مصدر→مصرف)",
+      "url": "http://127.0.0.1:39005/assets/app.js",
+      "severity": "متوسط",
+      "confidence": "تحتاج مراجعة يدوية"
+    },
+    {
+      "gt": "GT-LS",
+      "title": "بيانات حساسة في localStorage",
+      "url": "http://127.0.0.1:39005/assets/app.js",
+      "severity": "منخفض",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/product?id=1",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/redir?next=/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/product?id=1",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/redir?next=/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-OAPI-NOSEC",
+      "title": "عمليات API بلا مصادقة في تعريف OpenAPI",
+      "url": "http://127.0.0.1:39005/openapi.json",
+      "severity": "متوسط",
+      "confidence": "تحتاج مراجعة يدوية"
+    },
+    {
+      "gt": "GT-OAPI-STATE",
+      "title": "عمليات تغيير حالة (PUT/PATCH/DELETE) معرّفة",
+      "url": "http://127.0.0.1:39005/openapi.json",
+      "severity": "منخفض",
+      "confidence": "معلوماتية"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/server-info",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/server-info",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-IDOR",
+      "title": "وصول مباشر لكائنات بمعرفات متسلسلة دون تفويض ظاهر (IDOR/BOLA)",
+      "url": "http://127.0.0.1:39005/api/users/1",
+      "severity": "عالٍ",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-IDOR",
+      "title": "وصول مباشر لكائنات بمعرفات متسلسلة دون تفويض ظاهر (IDOR/BOLA)",
+      "url": "http://127.0.0.1:39005/api/users/2",
+      "severity": "عالٍ",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-EXCESSIVE",
+      "title": "إفراط كشف بيانات في استجابة API",
+      "url": "http://127.0.0.1:39005/api/users/1",
+      "severity": "عالٍ",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-EXCESSIVE",
+      "title": "إفراط كشف بيانات في استجابة API",
+      "url": "http://127.0.0.1:39005/api/users/2",
+      "severity": "عالٍ",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-EXCESSIVE",
+      "title": "إفراط كشف بيانات في استجابة API",
+      "url": "http://127.0.0.1:39005/api/users/3",
+      "severity": "عالٍ",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/status/404",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/status/500",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/api/admin/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/status/404",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/status/500",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/api/admin/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-ERRLEAK",
+      "title": "صفحة خطأ تكشف معلومات داخلية",
+      "url": "http://127.0.0.1:39005/status/500",
+      "severity": "منخفض",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-GIT",
+      "title": "مستودع Git مكشوف",
+      "url": "http://127.0.0.1:39005/.git/HEAD",
+      "severity": "عالٍ",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-CSRF-FORM",
+      "title": "نموذج POST بلا رمز CSRF ظاهر",
+      "url": "http://127.0.0.1:39005/api/login",
+      "severity": "متوسط",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-HTTP-LOGIN",
+      "title": "نموذج كلمة مرور عبر اتصال غير مشفر",
+      "url": "http://127.0.0.1:39005/api/login",
+      "severity": "متوسط",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-PWPOLICY",
+      "title": "راجع سياسة كلمة المرور يدوياً",
+      "url": "http://127.0.0.1:39005/api/login",
+      "severity": "منخفض",
+      "confidence": "معلوماتية"
+    },
+    {
+      "gt": "GT-EXCESSIVE",
+      "title": "إفراط كشف بيانات في استجابة API",
+      "url": "http://127.0.0.1:39005/api/users",
+      "severity": "عالٍ",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/register",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/xss-test?q=مرحبا",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/xss-safe?q=مرحبا",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/checkout?step=2",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/register",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/xss-test?q=مرحبا",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/xss-safe?q=مرحبا",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/checkout?step=2",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-XSS",
+      "title": "انعكاس XSS دون ترميز",
+      "url": "http://127.0.0.1:39005/xss-test",
+      "severity": "متوسط",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-TRAV",
+      "title": "اجتياز مسار (Path Traversal)",
+      "url": "http://127.0.0.1:39005/download",
+      "severity": "عالٍ",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-CSRF-FORM",
+      "title": "نموذج POST بلا رمز CSRF ظاهر",
+      "url": "http://127.0.0.1:39005/register",
+      "severity": "متوسط",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-HTTP-LOGIN",
+      "title": "نموذج كلمة مرور عبر اتصال غير مشفر",
+      "url": "http://127.0.0.1:39005/register",
+      "severity": "متوسط",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-CORS",
+      "title": "تهيئة CORS خطيرة (* مع credentials)",
+      "url": "http://127.0.0.1:39005/api/cors",
+      "severity": "متوسط",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-BIZ-STEP",
+      "title": "تدفق متعدد الخطوات — راجع إمكانية القفز",
+      "url": "http://127.0.0.1:39005/checkout?step=2",
+      "severity": "منخفض",
+      "confidence": "تحتاج مراجعة يدوية"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/dom-xss",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/backup/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/dom-xss",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/backup/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-DIRLIST",
+      "title": "سرد مجلد مكشوف (Directory Listing)",
+      "url": "http://127.0.0.1:39005/backup/",
+      "severity": "متوسط",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-DOM",
+      "title": "تدفق DOM خطير محتمل في سكربت مضمّن",
+      "url": "http://127.0.0.1:39005/dom-xss",
+      "severity": "متوسط",
+      "confidence": "تحتاج مراجعة يدوية"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/search",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/upload",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/logout",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/search",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/upload",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/logout",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-SQLI",
+      "title": "حقن SQL",
+      "url": "http://127.0.0.1:39005/search",
+      "severity": "عالٍ",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-CSRF-FORM",
+      "title": "نموذج POST بلا رمز CSRF ظاهر",
+      "url": "http://127.0.0.1:39005/upload",
+      "severity": "متوسط",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-LOGOUT",
+      "title": "تسجيل الخروج لا يبدو أنه يبطل الكوكي",
+      "url": "http://127.0.0.1:39005/logout",
+      "severity": "منخفض",
+      "confidence": "تحتاج مراجعة يدوية"
+    },
+    {
+      "gt": "GT-UPLOAD",
+      "title": "نموذج رفع ملفات بلا قيد نوع ظاهر",
+      "url": "http://127.0.0.1:39005/upload",
+      "severity": "متوسط",
+      "confidence": "تحتاج مراجعة يدوية"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/hello?name=ضيف",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/xpath?q=book",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/hello?name=ضيف",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/xpath?q=book",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-SSTI",
+      "title": "حقن قوالب (Jinja2/Twig)",
+      "url": "http://127.0.0.1:39005/hello",
+      "severity": "عالٍ",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-XPATH",
+      "title": "حقن XPath محتمل",
+      "url": "http://127.0.0.1:39005/xpath",
+      "severity": "متوسط",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-HDRINJ",
+      "title": "حقن ترويسات HTTP",
+      "url": "http://127.0.0.1:39005/redir",
+      "severity": "عالٍ",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-BIZ-NEG",
+      "title": "قبول قيمة سالبة لمعامل مالي/كمية",
+      "url": "http://127.0.0.1:39005/order?price=10",
+      "severity": "عالٍ",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/form",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/ping?host=127.0.0.1",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/ldap?user=ali",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/form",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/ping?host=127.0.0.1",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/ldap?user=ali",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-ENV",
+      "title": "ملف بيئة .env مكشوف",
+      "url": "http://127.0.0.1:39005/.env",
+      "severity": "حرج",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-CMDI",
+      "title": "حقن أوامر نظام",
+      "url": "http://127.0.0.1:39005/ping",
+      "severity": "حرج",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-LDAP",
+      "title": "حقن LDAP محتمل",
+      "url": "http://127.0.0.1:39005/ldap",
+      "severity": "متوسط",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-HDR-XFO",
+      "title": "غياب سياسة منع التأطير",
+      "url": "http://127.0.0.1:39005/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-HDR-NOSNIFF",
+      "title": "غياب سياسة MIME nosniff",
+      "url": "http://127.0.0.1:39005/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-SERVER-HDR",
+      "title": "كشف ترويسة Server",
+      "url": "http://127.0.0.1:39005",
+      "severity": "معلوماتية",
+      "confidence": "معلوماتية"
+    },
+    {
+      "gt": "GT-COOKIE-HTTPONLY",
+      "title": "كوكي دون سمة HttpOnly",
+      "url": "http://127.0.0.1:39005/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-COOKIE-SAMESITE",
+      "title": "كوكي دون سياسة SameSite فعالة",
+      "url": "http://127.0.0.1:39005/",
+      "severity": "منخفض",
+      "confidence": "مؤكدة"
+    },
+    {
+      "gt": "GT-WEAK-SESSION",
+      "title": "معرّف جلسة ضعيف العشوائية",
+      "url": "http://127.0.0.1:39005/",
+      "severity": "متوسط",
+      "confidence": "مرجحة"
+    },
+    {
+      "gt": "GT-RATELIMIT",
+      "title": "لا توجد مؤشرات حد معدل على واجهات API",
+      "url": "http://127.0.0.1:39005",
+      "severity": "منخفض",
+      "confidence": "تحتاج مراجعة يدوية"
+    },
+    {
+      "gt": "GT-CSP",
+      "title": "غياب سياسة أمن المحتوى (CSP)",
+      "url": "http://127.0.0.1:39005",
+      "severity": "منخفض",
+      "confidence": "معلوماتية"
+    }
+  ],
+  "missed": [],
+  "false_positives": [],
+  "control_violations": [],
+  "total_findings": 86,
+  "gt_instances": 86,
+  "meta": {
+    "date": "2026-10-05 15:06:26",
+    "origin": "http://127.0.0.1:39005",
+    "requests": 211,
+    "routes": 36,
+    "duration_sec": 14.7
+  }
+}
