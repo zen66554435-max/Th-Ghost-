@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TH Ghost — منصة التدقيق الأمني</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">👻</span>
+    <div>
+      <h1>TH Ghost</h1>
+      <p class="muted">منصة تدقيق أمني دفاعية — فحص غير تدميري مصرح به فقط</p>
+    </div>
+  </div>
+  <nav class="tabs">
+    <button class="tab active" data-view="dashboard">لوحة المعلومات</button>
+    <button class="tab" data-view="projects">المواقع</button>
+    <button class="tab" data-view="scans">الفحوصات</button>
+    <button class="tab" data-view="auditlog">سجل التدقيق</button>
+  </nav>
+</header>
+
+<main>
+  <!-- لوحة المعلومات -->
+  <section id="view-dashboard" class="view active">
+    <div class="cards" id="stats-cards"></div>
+    <div class="panel">
+      <h2>النتائج حسب الشدة</h2>
+      <div id="sev-bars" class="bars"></div>
+    </div>
+    <div class="panel">
+      <h2>النتائج حسب مستوى الثقة</h2>
+      <div id="conf-bars" class="bars"></div>
+    </div>
+  </section>
+
+  <!-- المواقع -->
+  <section id="view-projects" class="view">
+    <div class="panel">
+      <div class="panel-head">
+        <h2>المواقع المسجلة</h2>
+        <button class="btn primary" id="btn-add-project">+ إضافة موقع</button>
+      </div>
+      <table class="table" id="projects-table">
+        <thead><tr><th>الاسم</th><th>الأصل</th><th>النطاق</th><th>حسابات</th><th>آخر فحص</th><th>إجراءات</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- الفحوصات -->
+  <section id="view-scans" class="view">
+    <div class="panel">
+      <h2>سجل الفحوصات</h2>
+      <table class="table" id="scans-table">
+        <thead><tr><th>#</th><th>الموقع</th><th>الحالة</th><th>التقدم</th><th>النتائج</th><th>البدء</th><th>إجراءات</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="panel hidden" id="scan-detail-panel">
+      <div class="panel-head">
+        <h2 id="scan-detail-title">تفاصيل الفحص</h2>
+        <div>
+          <button class="btn" id="btn-report-md">تقرير Markdown</button>
+          <button class="btn" id="btn-report-json">تصدير JSON</button>
+        </div>
+      </div>
+      <div id="scan-summary" class="summary-grid"></div>
+      <div class="filters">
+        <select id="filter-severity"><option value="">كل الشدائد</option></select>
+        <select id="filter-confidence"><option value="">كل مستويات الثقة</option></select>
+        <select id="filter-category"><option value="">كل الفئات</option></select>
+        <input type="search" id="filter-search" placeholder="بحث في النتائج…">
+      </div>
+      <table class="table" id="findings-table">
+        <thead><tr><th>الشدة</th><th>العنوان</th><th>الفئة</th><th>الثقة</th><th>الموقع</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <h3>خريطة الموقع المكتشفة</h3>
+      <table class="table" id="routes-table">
+        <thead><tr><th>المسار</th><th>المصدر</th><th>الحالة</th><th>المعاملات</th><th>وقت الاكتشاف</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- سجل التدقيق -->
+  <section id="view-auditlog" class="view">
+    <div class="panel">
+      <h2>سجل التدقيق</h2>
+      <table class="table" id="audit-table">
+        <thead><tr><th>الوقت</th><th>الإجراء</th><th>التفاصيل</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<!-- حوار إضافة موقع -->
+<dialog id="dlg-project">
+  <form id="form-project" method="dialog">
+    <h3>إضافة موقع للفحص</h3>
+    <label>اسم المشروع<input name="name" required maxlength="120"></label>
+    <label>عنوان الموقع (الأصل)<input name="origin" required placeholder="http://127.0.0.1:8000" dir="ltr"></label>
+    <label>بادئات النطاق المصرح (مفصولة بفواصل)<input name="scope_prefixes" value="/" dir="ltr"></label>
+    <label>ملاحظات / مرجع التصريح<textarea name="notes" rows="2"></textarea></label>
+    <p class="muted">يُرفض أي هدف يحل إلى شبكة داخلية أو عنوان metadata سحابي إلا المختبرات المحلية.</p>
+    <menu>
+      <button class="btn primary" value="save">حفظ</button>
+      <button class="btn" value="cancel" formnovalidate>إلغاء</button>
+    </menu>
+  </form>
+</dialog>
+
+<!-- حوار بدء فحص -->
+<dialog id="dlg-scan">
+  <form id="form-scan" method="dialog">
+    <h3>بدء فحص جديد</h3>
+    <label>عمق الفحص
+      <select name="depth">
+        <option>سطحي</option><option selected>متوسط</option><option>عميق</option>
+      </select>
+    </label>
+    <label>معدل الطلبات (طلب/ثانية)<input name="rate_rps" type="number" min="0.5" max="20" step="0.5" value="5"></label>
+    <label>المدة القصوى (ثانية)<input name="max_duration_sec" type="number" min="30" max="3600" step="30" value="600"></label>
+    <fieldset>
+      <legend>أنواع الفحص</legend>
+      <div id="checks-list" class="checks"></div>
+    </fieldset>
+    <label class="row"><input name="use_accounts" type="checkbox"> استخدام الحسابات الاختبارية المصرح بها</label>
+    <menu>
+      <button class="btn primary" value="start">بدء الفحص</button>
+      <button class="btn" value="cancel" formnovalidate>إلغاء</button>
+    </menu>
+  </form>
+</dialog>
+
+<!-- حوار الحسابات الاختبارية -->
+<dialog id="dlg-accounts">
+  <form id="form-account" method="dialog">
+    <h3>الحسابات الاختبارية</h3>
+    <ul id="accounts-list" class="plain-list"></ul>
+    <hr>
+    <label>التسمية<input name="label" required maxlength="60" placeholder="حساب منخفض الصلاحية"></label>
+    <label>اسم المستخدم<input name="username" required maxlength="120"></label>
+    <label>كلمة المرور<input name="password" type="password" required maxlength="200"></label>
+    <p class="muted">لا تُعرض كلمات المرور بعد الحفظ ولا تظهر في أي تقرير.</p>
+    <menu>
+      <button class="btn primary" value="add">إضافة الحساب</button>
+      <button class="btn" value="close" formnovalidate>إغلاق</button>
+    </menu>
+  </form>
+</dialog>
+
+<!-- حوار تدقيق التبعيات -->
+<dialog id="dlg-deps">
+  <form id="form-deps" method="dialog">
+    <h3>تدقيق التبعيات والمصدر</h3>
+    <p class="muted">ارفع requirements.txt أو package-lock.json أو ملفات Python (حتى 10 ملفات، 2MB لكل ملف).</p>
+    <input type="file" id="deps-files" multiple accept=".txt,.lock,.json,.py">
+    <menu>
+      <button class="btn primary" value="audit">تدقيق</button>
+      <button class="btn" value="cancel" formnovalidate>إلغاء</button>
+    </menu>
+  </form>
+</dialog>
+
+<!-- حوار تفاصيل نتيجة -->
+<dialog id="dlg-finding">
+  <div class="finding-detail" id="finding-detail"></div>
+  <menu><button class="btn" id="btn-close-finding">إغلاق</button></menu>
+</dialog>
+
+<div id="toast" class="toast hidden"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
